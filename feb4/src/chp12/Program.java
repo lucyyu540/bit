@@ -12,7 +12,8 @@ public class Program {
 		else System.out.println("member not found");
 	}
 	/*3*/public void print() { for(Member mem : this.members) {mem.print();} }
-	public void menu(Scanner in) {
+	public void menu() {
+		Scanner in = new Scanner(System.in);
 		System.out.println("***********");
 		System.out.println("1) sign up\n2) delete member\n3) print all\n4) exit");
 		System.out.println("***********");
@@ -35,8 +36,7 @@ public class Program {
 	}
 	public static void main(String[] args) {
 		Program program = new Program();
-		Scanner in = new Scanner(System.in);
-		while(true) {program.menu(in);}
+		while(true) {program.menu();}
 	}
 }
 class Member implements Comparable<Member>{
@@ -54,5 +54,8 @@ class Member implements Comparable<Member>{
 	public boolean equals(Member o) {
 		if(this.id == o.getID()) return true;
 		else return false;
+	}
+	public int hashCode() {
+		return ((Integer)this.id).hashCode();
 	}
 }
